@@ -1,5 +1,7 @@
 # ts-api-controller-decorators
 
+[npm](https://www.npmjs.com/package/ts-api-controller-decorators)
+
 Example:
 1. Decorate controller:
 ```ts
