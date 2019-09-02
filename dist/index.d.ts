@@ -1,9 +1,11 @@
 import "reflect-metadata";
-export declare const ROUTES_META_KEY = "routes";
-export declare const CONTROLLER_META_KEY = "controller";
-export declare type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+import { ArgType, HTTPMethod } from "./consts";
 declare type constructor<T> = {
     new (...args: any[]): T;
+};
+export declare type ArgumentDescription = {
+    type: ArgType;
+    name?: string;
 };
 export declare type Route = {
     method: HTTPMethod;
@@ -18,5 +20,12 @@ export declare function Post(url?: string): (target: any, propertyName: string, 
 export declare function Put(url?: string): (target: any, propertyName: string, propertyDesciptor: PropertyDescriptor) => PropertyDescriptor;
 export declare function Patch(url?: string): (target: any, propertyName: string, propertyDesciptor: PropertyDescriptor) => PropertyDescriptor;
 export declare function Del(url?: string): (target: any, propertyName: string, propertyDesciptor: PropertyDescriptor) => PropertyDescriptor;
+export declare function Request(target: any, propertyKey: string, parameterIndex: number): void;
+export declare function Body(target: any, propertyKey: string, parameterIndex: number): void;
+export declare function Response(target: any, propertyKey: string, parameterIndex: number): void;
+export declare function PathParam(name: string): (target: any, propertyKey: string, parameterIndex: number) => void;
+export declare function Query(target: any, propertyKey: string, parameterIndex: number): void;
+export declare function Params(target: any, propertyKey: string, parameterIndex: number): void;
+export declare function QueryParam(name: string): (target: any, propertyKey: string, parameterIndex: number) => void;
 export declare function registerController(controller: any, bindRoute: (route: Route) => void): void;
 export {};
